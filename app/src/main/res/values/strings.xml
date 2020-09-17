@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">KidsToDoApp</string>
+    <string name="myText1">TextView</string>
+    <string name="myText2">TextView</string>
+    <string name="chore_discription">Chore DIscription</string>
+
+    <string-array name = "toDoList">
+        <item>Wash Dishes</item>
+        <item>Clean Room</item>
+        <item>Vacuum Floor</item>
+        <item>Attend Zoom Meeting for school</item>
+        <item>Take trash out</item>
+        <item>Do Laundry</item>
+        <item>Place food in the dog bowl</item>
+        <item>Set the Table</item>
+
+    </string-array>
+
+    <string-array name="description">
+        <item>Place dishes in the dish washer</item>
+        <item>Put away all toys</item>
+        <item>Vacuum the living room</item>
+        <item>Take the trash in the ktichen oout</item>
+        <item>Fold the laundry</item>
+        <item>Place the vegtables in the sink</item>
+        <item>Put bowls on the table</item>
+
+    </string-array>
+
 </resources>
