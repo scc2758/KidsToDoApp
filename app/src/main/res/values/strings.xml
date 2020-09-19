@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">KidsToDoApp</string>
-    <string name="myText1">TextView</string>
-    <string name="myText2">TextView</string>
-    <string name="chore_discription">Chore DIscription</string>
+    <string name="chore_discription">Chore Discription</string>
+    <string name="entry_txt">Type a task to complete</string>
+    <string name="entryDescription">Please enter a description of task</string>
+    <string name="add_entry_button">Button</string>
 
     <string-array name = "toDoList">
         <item>Wash Dishes</item>
