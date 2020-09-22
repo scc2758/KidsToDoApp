@@ -15,5 +15,6 @@
     <string name="available">Available</string>
     <string name="points">Points:</string>
     <string name="todo">TODO</string>
+    <string name="editeventsfragment">EditEventsFragment</string>
 
 </resources>
