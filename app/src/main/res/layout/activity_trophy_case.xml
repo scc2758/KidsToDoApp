@@ -90,20 +90,6 @@
         app:layout_constraintTop_toBottomOf="@+id/earnedText"
         app:layout_constraintVertical_bias="0.349" />
 
-    <TextView
-        android:id="@+id/piontsText"
-        android:layout_width="125dp"
-        android:layout_height="48dp"
-        android:text="@string/points"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.001" />
-
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/earnedGrid"
         android:layout_width="0dp"
@@ -115,8 +101,8 @@
 
         <ImageButton
             android:id="@+id/earnedPrize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:contentDescription="@string/todo"
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
@@ -135,22 +121,22 @@
 
         <ImageButton
             android:id="@+id/availablePrize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:contentDescription="@string/todo"
             app:srcCompat="@android:drawable/btn_star_big_off" />
     </androidx.gridlayout.widget.GridLayout>
 
     <TextView
         android:id="@+id/numPt"
-        android:layout_width="196dp"
-        android:layout_height="56dp"
-        android:textAlignment="viewStart"
+        android:layout_width="295dp"
+        android:layout_height="73dp"
+        android:textAlignment="center"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/include"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/piontsText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintVertical_bias="0.085" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

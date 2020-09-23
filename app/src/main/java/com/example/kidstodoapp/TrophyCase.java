@@ -15,7 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class TrophyCase extends AppCompatActivity {
 
-    int points = 0;
+    public int points = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class TrophyCase extends AppCompatActivity {
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
         ImageButton availablePrize = (ImageButton) findViewById(R.id.availablePrize);
 
-        numPt.setText(""+ points);
+        numPt.setText("Points: "+ points);
 
         earnedPrize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +40,8 @@ public class TrophyCase extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(TrophyCase.this, "Do you want to buy this one?", Toast.LENGTH_LONG).show();
+                Toast.makeText(TrophyCase.this, "Ice with the Family!", Toast.LENGTH_LONG).show();
+                Toast.makeText(TrophyCase.this, "It's 50 points", Toast.LENGTH_LONG).show();
             }
         });
         homeBtn.setOnClickListener(new View.OnClickListener() {
