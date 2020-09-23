@@ -1,5 +1,6 @@
 package com.example.kidstodoapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class TrophyCase extends AppCompatActivity {
 
     public int points = 0;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class TrophyCase extends AppCompatActivity {
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
         ImageButton availablePrize = (ImageButton) findViewById(R.id.availablePrize);
 
-        numPt.setText("Points: "+ points);
+        numPt.setText(String.format("Points: %d", points));
 
         earnedPrize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,9 +41,7 @@ public class TrophyCase extends AppCompatActivity {
         availablePrize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(TrophyCase.this, "Do you want to buy this one?", Toast.LENGTH_LONG).show();
-                Toast.makeText(TrophyCase.this, "Ice with the Family!", Toast.LENGTH_LONG).show();
-                Toast.makeText(TrophyCase.this, "It's 50 points", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(TrophyCase.this, PopAva.class));
             }
         });
         homeBtn.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,6 @@ public class TrophyCase extends AppCompatActivity {
         });
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +62,6 @@ public class TrophyCase extends AppCompatActivity {
             }
         });
     }
-    //private void setSupportActionBar(Toolbar toolbar) { }
+    //private void setSupportActionBar(Toolbar toolbar) {
+    //}
 }

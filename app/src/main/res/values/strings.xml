@@ -16,5 +16,9 @@
     <string name="points">Points:</string>
     <string name="todo">TODO</string>
     <string name="editeventsfragment">EditEventsFragment</string>
+    <string name="icecream_with_family">Icecream With Family!</string>
+    <string name="cost_50_points">Cost 50 points</string>
+    <string name="back_to_trophy_case">Back to Trophy Case</string>
+    <string name="buy">Buy</string>
 
 </resources>
