@@ -1,11 +1,13 @@
 package com.example.kidstodoapp;
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Button;
 
 // This comment was made by Sean Youngstone
 public class MainActivity extends AppCompatActivity {
@@ -24,4 +26,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
