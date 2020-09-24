@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class TrophyCase extends AppCompatActivity {
 
-    public int points = 0;
+    int points = 100;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -29,7 +29,6 @@ public class TrophyCase extends AppCompatActivity {
         TextView availableText = (TextView) findViewById(R.id.availableText);
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
         ImageButton availablePrize = (ImageButton) findViewById(R.id.availablePrize);
-
         numPt.setText(String.format("Points: %d", points));
 
         earnedPrize.setOnClickListener(new View.OnClickListener() {
