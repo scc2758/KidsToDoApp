@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.HashMap;
@@ -21,33 +22,48 @@ public class TrophyPopUp extends AppCompatActivity {
     int idnumber = 0;
 
     final EditText nameInput= (EditText) findViewById(R.id.editName);
-    String name = nameInput.getText().toString();
+    String nameString = nameInput.getText().toString();
 
     final EditText pointsInput= (EditText) findViewById(R.id.editPoints);
-    String stemp = pointsInput.getText().toString();
-    int points = Integer.parseInt(stemp);
+    String pointString = pointsInput.getText().toString();
+    int points = Integer.parseInt(pointString);
 
-   //if trophy case doesn't contain id then,
 
-    Trophy ttemp = new Trophy(name,points);
-    //trophyCase.put(idnumber, ttemp);
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_pop_up);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button newButton = findViewById(R.id.newButton);
+        newButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-        
+                Trophy ttemp = new Trophy(nameString,points);
+                trophyCase.put(idnumber, ttemp);
+                idnumber++;
             }
         });
-    }
+
+        Button saveButton = findViewById(R.id.saveButton);
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                Trophy ttemp = trophyCase.get(idnumber);
+                ttemp.setName(nameString);
+                ttemp.setName(pointString);
+            }
+        });
+
+        }
+
+
+
 }

@@ -27,13 +27,13 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="259dp"
         android:layout_marginBottom="93dp"
-        android:text="@string/Save"
+        android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,11 +43,32 @@
         android:id="@+id/editPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="416dp"
         android:ems="10"
         android:inputType="number"
         android:text="@={trophy.points}"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="129dp"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editName" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="121dp"
+        android:layout_height="111dp"
+        app:srcCompat="@drawable/trophy1"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="272dp" />
+
+    <Button
+        android:id="@+id/newButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="590dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
