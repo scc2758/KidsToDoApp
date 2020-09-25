@@ -10,7 +10,6 @@ public class Trophy {
             this.points = points;
         }
 
-
         public String getName() {
             return name;
         }

@@ -31,6 +31,7 @@ public class TrophyPopUp extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
 
+        //Delete toolbar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_pop_up);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -44,6 +45,7 @@ public class TrophyPopUp extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
+                //Create trophy object and add to hashmap
                 Trophy ttemp = new Trophy(nameString,points);
                 trophyCase.put(idnumber, ttemp);
                 idnumber++;
@@ -58,6 +60,7 @@ public class TrophyPopUp extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
+                //Create temp trophy object from existing hashmap object using ID number
                 Trophy ttemp = trophyCase.get(idnumber);
                 ttemp.setName(nameString);
                 ttemp.setName(pointString);
