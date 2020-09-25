@@ -36,6 +36,7 @@ public class TrophyPopUp extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Create new trophy icon and store data into hashmap
         Button newButton = findViewById(R.id.newButton);
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,7 @@ public class TrophyPopUp extends AppCompatActivity {
             }
         });
 
+        //Save edits made to trophy icon
         Button saveButton = findViewById(R.id.saveButton);
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
