@@ -1,4 +1,4 @@
-package com.example.kidstodoapp;
+package com.example.kidstodoapp.pkg;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.kidstodoapp.R;
 
 public class First2Fragment extends Fragment {
 

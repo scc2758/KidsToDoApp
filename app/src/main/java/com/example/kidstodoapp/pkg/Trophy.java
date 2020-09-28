@@ -1,8 +1,12 @@
 package com.example.kidstodoapp.pkg;
 
+import java.util.HashMap;
+
 public class Trophy {
 
-        private String name;
+    final HashMap<Integer, Trophy> trophyCase = new HashMap<>();
+
+    private String name;
         int points;
 
         Trophy(String name, int points) {

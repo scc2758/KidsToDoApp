@@ -21,7 +21,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TrophyPopUp extends AppCompatActivity {
+public class SaveTrophy extends AppCompatActivity {
 
     HashMap<Integer, Trophy> trophyCase = new HashMap<>();
     int idnumber = 0;
@@ -51,29 +51,11 @@ public class TrophyPopUp extends AppCompatActivity {
 
         //Delete toolbar
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trophy_pop_up);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_save_trophy);
 
-        //Create new trophy icon and store data into hashmap
-        Button newButton = findViewById(R.id.newButton);
-        newButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-                //Create trophy object and add to hashmap
-                Trophy ttemp = new Trophy(nameString,points);
-                trophyCase.put(idnumber, ttemp);
-                idnumber++;
-
-            }
-        });
-        
         //Save edits made to trophy icon
         Button saveButton = findViewById(R.id.saveButton);
-        newButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -109,7 +91,5 @@ public class TrophyPopUp extends AppCompatActivity {
             imageViewGallery.setImageURI(imageUriGallery);
         }
     }
-
-
 
 }
