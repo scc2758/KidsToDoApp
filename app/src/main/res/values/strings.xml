@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">KidsToDoApp</string>
+<<<<<<< HEAD
     <string name="title_activity_trophy_pop_up">TrophyPopUp</string>
+=======
+    <string name="title_activity_trophy_case">TrophyCase</string>
+>>>>>>> 1c0b87e3266582f4f17447a338498cd72dae00c0
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -9,7 +13,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+<<<<<<< HEAD
     <string name="Save">Button</string>
     <string name="name" />
     <string name="TrophyName">Trophy</string>
+=======
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
+>>>>>>> 1c0b87e3266582f4f17447a338498cd72dae00c0
 </resources>
