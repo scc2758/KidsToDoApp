@@ -11,9 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 public class TrophyCase extends AppCompatActivity {
 
     int points = 100;
@@ -25,6 +22,7 @@ public class TrophyCase extends AppCompatActivity {
         setContentView(R.layout.activity_trophy_case);
         TextView numPt = (TextView) findViewById(R.id.numPt);
         Button homeBtn = (Button) findViewById(R.id.homeBtn);
+        Button addBtn = (Button) findViewById(R.id.addBtn);
         TextView earnedText = (TextView) findViewById(R.id.earnedText);
         TextView availableText = (TextView) findViewById(R.id.availableText);
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
@@ -50,16 +48,16 @@ public class TrophyCase extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Toast.makeText(TrophyCase.this, "Add Trophy", Toast.LENGTH_LONG).show();
+                //Intent startIntent = new Intent(getApplicationContext(), );
+                //startActivity(startIntent);
             }
         });
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
     }
     //private void setSupportActionBar(Toolbar toolbar) {
     //}

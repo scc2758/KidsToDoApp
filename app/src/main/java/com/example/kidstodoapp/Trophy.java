@@ -1,8 +1,8 @@
 package com.example.kidstodoapp;
 
 public class Trophy {
-    String name;
-    int points;
+    protected String name;
+    protected int points;
 
     public void setName(String name) {
         this.name = name;
