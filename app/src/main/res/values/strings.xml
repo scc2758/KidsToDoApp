@@ -21,4 +21,6 @@
     <string name="back_to_trophy_case">Back to Trophy Case</string>
     <string name="buy">Buy</string>
 
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
 </resources>
