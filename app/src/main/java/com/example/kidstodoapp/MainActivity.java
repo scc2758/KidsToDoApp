@@ -1,24 +1,18 @@
 package com.example.kidstodoapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 // This comment was made by Sean Youngstone
 public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEntryListener {
@@ -60,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
         });
     }
 
-        adapter = new ToDoAdapter(toDoEntries, this);
+       /* adapter = new ToDoAdapter(toDoEntries, this);
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setAdapter(adapter);
@@ -121,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
                         Toast.LENGTH_SHORT).show();
             }
         };
-    }
+    }*/
 
     @Override
     public void onUserInteraction() {

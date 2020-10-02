@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ public class TrophyCase extends AppCompatActivity {
         TextView numPt = (TextView) findViewById(R.id.numPt);
         Button homeBtn = (Button) findViewById(R.id.homeBtn);
         Button addBtn = (Button) findViewById(R.id.addBtn);
+        GridLayout earnedGrid = (GridLayout) findViewById(R.id.earnedGrid);
+        GridLayout availableGrid = (GridLayout) findViewById(R.id.availableGrid);
         TextView earnedText = (TextView) findViewById(R.id.earnedText);
         TextView availableText = (TextView) findViewById(R.id.availableText);
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);

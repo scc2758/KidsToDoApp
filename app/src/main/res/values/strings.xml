@@ -23,4 +23,6 @@
 
     <string name="login">Log In</string>
     <string name="logout">Log Out</string>
+    <string name="add_task">Add Task</string>
+    <string name="add_trophy">Add Trophy</string>
 </resources>
