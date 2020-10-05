@@ -13,17 +13,22 @@ import androidx.annotation.Nullable;
 public class PopAva extends Activity{
 
     TrophyCase points = new TrophyCase();
-    int point = points.points;
+    private Button trophyBtn;
+    private Button buy;
+    private TextView priceTV;
+    private TextView nameTV;
+
+    int point;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pop_window);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        Button trophyBtn = (Button)findViewById(R.id.trophyBtn);
-        Button buy = (Button)findViewById(R.id.buy);
-        TextView priceTV = (TextView)findViewById(R.id.priceTV);
-        TextView nameTV = (TextView)findViewById(R.id.nameTV);
+        trophyBtn.findViewById(R.id.trophyBtn);
+        buy.findViewById(R.id.buy);
+        priceTV.findViewById(R.id.priceTV);
+        nameTV.findViewById(R.id.nameTV);
 
         Trophy gift = new Trophy();
         final int price = gift.getPoints();

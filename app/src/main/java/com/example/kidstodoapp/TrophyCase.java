@@ -1,6 +1,5 @@
 package com.example.kidstodoapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,20 +11,28 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class TrophyCase extends AppCompatActivity {
 
-    int points = 100;
+    private static ArrayList<EarnedTrophy> earnedTrophy = new ArrayList<>();
+    private static ArrayList<AvailableTrophy> availableTrophy = new ArrayList<>();
+    private GridLayout earnedGrid;
+    private GridLayout availableGrid;
+    private Button homeBtn;
+    private Button addBtn;
+    private int points;
 
-    @SuppressLint("DefaultLocale")
+    //@SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_case);
         TextView numPt = (TextView) findViewById(R.id.numPt);
-        Button homeBtn = (Button) findViewById(R.id.homeBtn);
-        Button addBtn = (Button) findViewById(R.id.addBtn);
-        GridLayout earnedGrid = (GridLayout) findViewById(R.id.earnedGrid);
-        GridLayout availableGrid = (GridLayout) findViewById(R.id.availableGrid);
+        homeBtn.findViewById(R.id.homeBtn);
+        addBtn.findViewById(R.id.addBtn);
+        earnedGrid.findViewById(R.id.earnedGrid);
+        availableGrid.findViewById(R.id.availableGrid);
         TextView earnedText = (TextView) findViewById(R.id.earnedText);
         TextView availableText = (TextView) findViewById(R.id.availableText);
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
