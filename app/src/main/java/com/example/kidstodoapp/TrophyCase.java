@@ -12,23 +12,27 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class TrophyCase extends AppCompatActivity {
 
-    private static ArrayList<EarnedTrophy> earnedTrophy = new ArrayList<>();
-    private static ArrayList<AvailableTrophy> availableTrophy = new ArrayList<>();
+    private static ArrayList<Trophy> earnedTrophy = new ArrayList<>();
+    private static ArrayList<Trophy> availableTrophy = new ArrayList<>();
     private GridLayout earnedGrid;
     private GridLayout availableGrid;
     private Button homeBtn;
     private Button addBtn;
-    private int points;
+    private TextView numPt;
+    public int points;
+    private MainActivity main = new MainActivity();
+    Boolean inParentMode = main.inParentMode;
 
-    //@SuppressLint("DefaultLocale")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_case);
-        TextView numPt = (TextView) findViewById(R.id.numPt);
+        numPt.findViewById(R.id.numPt);
         homeBtn.findViewById(R.id.homeBtn);
         addBtn.findViewById(R.id.addBtn);
         earnedGrid.findViewById(R.id.earnedGrid);
@@ -37,7 +41,17 @@ public class TrophyCase extends AppCompatActivity {
         TextView availableText = (TextView) findViewById(R.id.availableText);
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
         ImageButton availablePrize = (ImageButton) findViewById(R.id.availablePrize);
-        numPt.setText(String.format("Points: %d", points));
+        //numPt.setText(String.format("Points: %d", points));
+
+
+        addBtn.setVisibility(View.GONE);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Trophy.class);
+               // startActivityForResult(intent, NEW_ENTRY_REQUEST);
+            }
+        });
+
 
         earnedPrize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,17 +72,17 @@ public class TrophyCase extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(TrophyCase.this, "Add Trophy", Toast.LENGTH_LONG).show();
-                //Intent startIntent = new Intent(getApplicationContext(), );
-                //startActivity(startIntent);
-            }
-        });
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
     }
-    //private void setSupportActionBar(Toolbar toolbar) {
-    //}
+    public void setPointsDisplay() {
+        numPt.setText(String.format(Locale.US, "$%d", points));
+    }
+    public void setInParentMode(Boolean bool) {
+            inParentMode = bool;
+            if (inParentMode) {
+                addBtn.setVisibility(View.VISIBLE);
+            }
+            else {
+                addBtn.setVisibility(View.GONE);
+            }
+    }
 }

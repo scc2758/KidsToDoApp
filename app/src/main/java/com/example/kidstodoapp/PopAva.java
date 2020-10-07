@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 public class PopAva extends Activity{
 
     TrophyCase points = new TrophyCase();
+
+    
     private Button trophyBtn;
     private Button buy;
     private TextView priceTV;

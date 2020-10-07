@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     private static String password;
     private static String phoneNumber;
     private static Boolean passwordAlreadySet = false;
-    private static Boolean inParentMode = false;
+     Boolean inParentMode = false;
 
     private final int NEW_ENTRY_REQUEST = 1;
     private final int VIEW_ENTRY_REQUEST = 2;
@@ -46,15 +46,6 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        trophyBtn = findViewById(R.id.trophyBtn);
-
-        trophyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent startIntent = new Intent(getApplicationContext(), TrophyCase.class);
-                startActivity(startIntent);
-            }
-        });
 
         adapter = new ToDoAdapter(toDoEntries, this);
 
@@ -90,6 +81,15 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
                             "Logged Out",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        trophyBtn = findViewById(R.id.trophyBtn);
+        trophyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), TrophyCase.class);
+                startActivity(startIntent);
             }
         });
 
