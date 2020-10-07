@@ -43,7 +43,6 @@ public class TrophyCase extends AppCompatActivity {
         ImageButton availablePrize = (ImageButton) findViewById(R.id.availablePrize);
         //numPt.setText(String.format("Points: %d", points));
 
-
         addBtn.setVisibility(View.GONE);
         addBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -51,7 +50,6 @@ public class TrophyCase extends AppCompatActivity {
                // startActivityForResult(intent, NEW_ENTRY_REQUEST);
             }
         });
-
 
         earnedPrize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +60,7 @@ public class TrophyCase extends AppCompatActivity {
         availablePrize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TrophyCase.this, PopAva.class));
+                startActivity(new Intent(TrophyCase.this, BuyingTrophy.class));
             }
         });
         homeBtn.setOnClickListener(new View.OnClickListener() {

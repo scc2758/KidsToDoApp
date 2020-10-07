@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     private static String password;
     private static String phoneNumber;
     private static Boolean passwordAlreadySet = false;
-     Boolean inParentMode = false;
+    Boolean inParentMode = false;
 
     private final int NEW_ENTRY_REQUEST = 1;
     private final int VIEW_ENTRY_REQUEST = 2;
