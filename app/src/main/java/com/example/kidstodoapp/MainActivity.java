@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
         trophyCaseButton = findViewById(R.id.TrophyCase);
         trophyCaseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), TrophyCase.class);
+                Intent intent = new Intent(view.getContext(), AddTrophy.class);
                 startActivity(intent);
             }
         });
