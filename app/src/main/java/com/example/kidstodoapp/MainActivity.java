@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
 
     private final int NEW_ENTRY_REQUEST = 1;
     private final int VIEW_ENTRY_REQUEST = 2;
-    private final int EDIT_ENTRY_REQUEST = 3;
 
     private ToDoAdapter adapter;
     private RecyclerView recyclerView;
