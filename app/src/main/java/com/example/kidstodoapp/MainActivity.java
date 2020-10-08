@@ -171,7 +171,6 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     public void setPassword(String str) {password = str;}
     public Boolean isPasswordAlreadySet() {return passwordAlreadySet;}
     public void setPasswordAlreadySet(Boolean bool) {passwordAlreadySet = bool;}
-    public Boolean isInParentMode() {return inParentMode;}
     public void setInParentMode(Boolean bool) {
         inParentMode = bool;
         if (inParentMode) {
