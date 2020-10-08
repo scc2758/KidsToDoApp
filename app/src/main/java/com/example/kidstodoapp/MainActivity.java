@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-// This comment was made by Sean Youngstone
+// This is a comment for the midterm
 public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEntryListener {
 
     private static ArrayList<ToDoEntry> toDoEntries = new ArrayList<>();
