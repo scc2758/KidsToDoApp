@@ -18,7 +18,7 @@ import java.util.Locale;
 
 // This comment was made by Sean Youngstone
 public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEntryListener {
-
+//This is for the midterm
     private ToDoAdapter adapter = new ToDoAdapter(toDoEntries, this);
 
     private TextView pointsDisplay;
