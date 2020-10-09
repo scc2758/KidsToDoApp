@@ -21,3 +21,5 @@ Do we want to mess with that?
 
 How is everyone feeling today?
 Meh -Sean
+
+Midterm commit #2 it has been a "fun" day
