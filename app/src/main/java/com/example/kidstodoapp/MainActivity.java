@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     private Handler parentModeTimeOut;
     private Runnable runnable;
 
+    private Boolean isThisForTheMidterm = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
