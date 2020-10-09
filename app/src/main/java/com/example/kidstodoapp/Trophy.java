@@ -1,12 +1,12 @@
 package com.example.kidstodoapp;
 
-import android.widget.ImageButton;
+import android.graphics.drawable.Icon;
 
 public class Trophy {
     protected String name;
     protected int points;
     protected String description;
-    protected ImageButton image;
+    protected Icon image;
 
     public void setName(String name) {
         this.name = name;
@@ -17,6 +17,9 @@ public class Trophy {
     public void setDescription(String description){
         this.description = description;
     }
+    public void setImage(Icon image){
+        this.image = image;
+    }
     public String getName(){
         return name;
     }
@@ -25,5 +28,8 @@ public class Trophy {
     }
     public String getDescription(){
         return description;
+    }
+    public Icon getImage(){
+        return image;
     }
 }

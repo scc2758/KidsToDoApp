@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-// This comment was made by Sean Youngstone
+
 public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEntryListener {
 
     private static ArrayList<ToDoEntry> toDoEntries = new ArrayList<>();

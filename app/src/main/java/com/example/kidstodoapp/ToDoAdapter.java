@@ -2,16 +2,12 @@ package com.example.kidstodoapp;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -28,7 +24,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     public static final int ITEM_TYPE_EDIT = 1;
     private int VIEW_TYPE = 0;
 
-    public ToDoAdapter(List<ToDoEntry> entries, OnEntryListener onEntryListener) {
+    public ToDoAdapter(ArrayList<ToDoEntry> entries, MainActivity onEntryListener) {
         this.mToDoEntries = entries;
         this.mOnEntryListener = onEntryListener;
     }

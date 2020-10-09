@@ -2,6 +2,8 @@ package com.example.kidstodoapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.util.Locale;
 
@@ -20,7 +23,7 @@ public class BuyingTrophy extends Activity{
     
     private Button trophyBtn;
     private Button buy;
-    private ImageButton image;
+    private ImageButton imageBtn;
     private TextView priceTV;
     private TextView nameTV;
     private TextView descripTV;
@@ -28,6 +31,9 @@ public class BuyingTrophy extends Activity{
     String name = trophy.getName();
     String descrip = trophy.getDescription();
     int point = trophyCase.points;
+    Icon image = trophy.getImage();
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +45,12 @@ public class BuyingTrophy extends Activity{
         priceTV.findViewById(R.id.priceTV);
         nameTV.findViewById(R.id.nameTV);
         descripTV.findViewById(R.id.descripTV);
+        imageBtn.findViewById(R.id.imageBtn);
 
         nameTV.setText(String.format(Locale.US, "$%d", name));
         priceTV.setText(String.format(Locale.US, "$%d", price));
         descripTV.setText(String.format(Locale.US, "$%d", descrip));
+        imageBtn.setImageIcon(image);
 
        // int width = dm.widthPixels;
         //int height = dm.heightPixels;

@@ -20,6 +20,7 @@ public class TrophyCase extends AppCompatActivity {
     private static ArrayList<Trophy> availableTrophy = new ArrayList<>();
     private GridLayout earnedGrid;
     private GridLayout availableGrid;
+    //private ToDoAdapter adapter;  change todoadapter
     private Button homeBtn;
     private Button addBtn;
     private TextView numPt;
@@ -41,7 +42,9 @@ public class TrophyCase extends AppCompatActivity {
         TextView availableText = (TextView) findViewById(R.id.availableText);
         ImageButton earnedPrize = (ImageButton) findViewById(R.id.earnedPrize);
         ImageButton availablePrize = (ImageButton) findViewById(R.id.availablePrize);
-        //numPt.setText(String.format("Points: %d", points));
+        numPt.setText(String.format(Locale.US, "$%d", points));
+        //adapter = new ToDoAdapter(earnedTrophy, this);
+        //earnedGrid.setAdapter(adapter);
 
         addBtn.setVisibility(View.GONE);
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,9 +74,7 @@ public class TrophyCase extends AppCompatActivity {
             }
         });
     }
-    public void setPointsDisplay() {
-        numPt.setText(String.format(Locale.US, "$%d", points));
-    }
+
     public void setInParentMode(Boolean bool) {
             inParentMode = bool;
             if (inParentMode) {
