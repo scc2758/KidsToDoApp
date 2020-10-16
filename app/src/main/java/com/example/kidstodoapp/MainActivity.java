@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        System.out.println("This is for the midterm");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
