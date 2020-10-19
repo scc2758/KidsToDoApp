@@ -18,8 +18,11 @@ import java.util.Locale;
 
 public class BuyingTrophy extends Activity{
 
+    String name ;
+    String descrip;
+    int point;
     TrophyCase trophyCase = new TrophyCase();
-    Trophy trophy = new Trophy();
+    Trophy trophy = new Trophy(name, descrip,point);
     
     private Button trophyBtn;
     private Button buy;
@@ -28,10 +31,8 @@ public class BuyingTrophy extends Activity{
     private TextView nameTV;
     private TextView descripTV;
     final int price = trophy.getPoints();
-    String name = trophy.getName();
-    String descrip = trophy.getDescription();
-    int point = trophyCase.points;
     Icon image = trophy.getImage();
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override

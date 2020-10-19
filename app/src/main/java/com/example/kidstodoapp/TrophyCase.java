@@ -26,7 +26,7 @@ public class TrophyCase extends AppCompatActivity {
     private TextView numPt;
     public int points;
     private MainActivity main = new MainActivity();
-    Boolean inParentMode = main.inParentMode;
+   // Boolean inParentMode = main.inParentMode;
 
 
     @Override
@@ -75,7 +75,7 @@ public class TrophyCase extends AppCompatActivity {
         });
     }
 
-    public void setInParentMode(Boolean bool) {
+   /* public void setInParentMode(Boolean bool) {
             inParentMode = bool;
             if (inParentMode) {
                 addBtn.setVisibility(View.VISIBLE);
@@ -83,5 +83,5 @@ public class TrophyCase extends AppCompatActivity {
             else {
                 addBtn.setVisibility(View.GONE);
             }
-    }
+    }*/
 }
