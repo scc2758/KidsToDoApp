@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Uses example from https://guides.codepath.com/android/using-the-recyclerview
@@ -24,7 +25,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private int VIEW_TYPE = 0;
 
     public ToDoAdapter(ArrayList<ToDoEntry> entries, MainActivity onEntryListener) {
-        this.mToDoEntries = entries;
+      //  this.mToDoEntries = entries;
         this.mOnEntryListener = onEntryListener;
     }
 

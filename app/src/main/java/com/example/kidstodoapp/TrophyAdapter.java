@@ -38,7 +38,7 @@ public class TrophyAdapter extends RecyclerView.Adapter<TrophyAdapter.ViewHolder
             super(view);
 
             nameTextView = itemView.findViewById(R.id.entry_name);
-            descriptionTextView = itemView.findViewById(R.id.entry_description);
+           // descriptionTextView = itemView.findViewById(R.id.entry_description);
             editTrophyButton = itemView.findViewById(R.id.edit_entry_button);
 
             this.onEntryListener = onEntryListener;

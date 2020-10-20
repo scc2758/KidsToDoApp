@@ -18,9 +18,9 @@ import java.util.Locale;
 
 public class BuyingTrophy extends Activity{
 
-    String name ;
-    String descrip;
-    int point;
+    private String name ;
+    private String descrip;
+    private int point;
     TrophyCase trophyCase = new TrophyCase();
     Trophy trophy = new Trophy(name, descrip,point);
     
@@ -38,7 +38,7 @@ public class BuyingTrophy extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pop_window);
+        setContentView(R.layout.redeem_window);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         trophyBtn.findViewById(R.id.trophyBtn);
@@ -52,10 +52,6 @@ public class BuyingTrophy extends Activity{
         priceTV.setText(String.format(Locale.US, "$%d", price));
         descripTV.setText(String.format(Locale.US, "$%d", descrip));
         imageBtn.setImageIcon(image);
-
-       // int width = dm.widthPixels;
-        //int height = dm.heightPixels;
-        //getWindow().setLayout((int)(width*.5),(int)(height*.5));
 
         trophyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,5 +67,4 @@ public class BuyingTrophy extends Activity{
             }
         });
     }
-
 }
