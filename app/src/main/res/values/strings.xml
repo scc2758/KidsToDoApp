@@ -23,6 +23,10 @@
 
     <string name="login">Log In</string>
     <string name="logout">Log Out</string>
+    <string name="p">p</string>
+    <string name="password">Password:</string>
+    <string name="phone_number">Phone Number:</string>
+    <string name="enter">Enter</string>
     <string name="add_task">Add Task</string>
     <string name="add_trophy">Add Trophy</string>
     <string name="pm">pM</string>
