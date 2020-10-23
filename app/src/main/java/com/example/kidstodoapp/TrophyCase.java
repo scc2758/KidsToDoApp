@@ -23,7 +23,7 @@ public class TrophyCase extends AppCompatActivity {
     private GridLayout availableGrid;
     //private ToDoAdapter adapter;  change todoadapter
     private Button homeBtn;
-    private Button addBtn;
+    private Button createNewTrophy;
     private TextView numPt;
     public int points;
     private MainActivity main = new MainActivity();
@@ -36,7 +36,6 @@ public class TrophyCase extends AppCompatActivity {
         setContentView(R.layout.activity_trophy_case);
         numPt.findViewById(R.id.numPt);
         homeBtn.findViewById(R.id.homeBtn);
-        addBtn.findViewById(R.id.addBtn);
         earnedGrid.findViewById(R.id.earnedGrid);
         availableGrid.findViewById(R.id.availableGrid);
         TextView earnedText = (TextView) findViewById(R.id.earnedText);
@@ -47,11 +46,11 @@ public class TrophyCase extends AppCompatActivity {
         adapter = new TrophyAdapter(earnedTrophy, (TrophyAdapter.OnEntryListener) this);
        // earnedGrid.setAdapter(adapter);
 
-        addBtn.setVisibility(View.GONE);
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        createNewTrophy = findViewById(R.id.AddTrophy);
+        createNewTrophy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Trophy.class);
-               // startActivityForResult(intent, NEW_ENTRY_REQUEST);
+                Intent intent = new Intent(view.getContext(), AddTrophy.class);
+                //startActivityForResult(intent, NEW);
             }
         });
 
@@ -75,14 +74,4 @@ public class TrophyCase extends AppCompatActivity {
             }
         });
     }
-
-   /* public void setInParentMode(Boolean bool) {
-            inParentMode = bool;
-            if (inParentMode) {
-                addBtn.setVisibility(View.VISIBLE);
-            }
-            else {
-                addBtn.setVisibility(View.GONE);
-            }
-    }*/
 }

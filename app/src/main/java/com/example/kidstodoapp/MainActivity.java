@@ -27,10 +27,6 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     private static ArrayList<ToDoEntry> toDoEntries = new ArrayList<>();
     private static ArrayList<ToDoEntry> completedEntries = new ArrayList<>();
     private static int pointsEarned = 0;
-    private static String password;
-    private static String phoneNumber;
-    private static Boolean passwordAlreadySet = false;
-    private static Boolean inParentMode = false;
 
     private final int NEW_ENTRY_REQUEST = 1;
     private final int VIEW_ENTRY_REQUEST = 2;
@@ -41,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     private TextView pointsDisplay;
     private Button parentModeButton;
     private Button addEntryButton;
+    private Button trophyCaseButton;
     private ImageButton setPhoneNumberButton;
 
     private Handler parentModeTimeOut;
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //adapter = new ToDoAdapter(toDoEntries, this);
+        adapter = new ToDoAdapter(toDoEntries, this);
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setAdapter(adapter);
@@ -68,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
             }
         });
 
+        trophyCaseButton = findViewById(R.id.trophyCase);
+        trophyCaseButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), TrophyCase.class);
+                startActivity(intent);
+            }
+        });
+
         parentModeButton = findViewById(R.id.pM);
         setPhoneNumberButton = findViewById(R.id.phone);
 
@@ -75,33 +80,33 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
         setPhoneNumberButton.setVisibility(View.GONE);
 
         parentModeButton.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  if(Utility.isInParentMode()) {
-                      Utility.setInParentMode(false);
-                      onParentModeChanged();
-                      Toast.makeText(MainActivity.this,
-                              "Logged Out",
-                              Toast.LENGTH_SHORT).show();
-                  }
-                  else if(Utility.isNotFirstTime() == null) {
-                      Intent intent = new Intent(view.getContext(), ParentModeFirstTime.class);
-                      startActivity(intent);
-                  }
-                  else {
-                      Intent intent = new Intent(view.getContext(), ParentMode.class);
-                      intent.putExtra(Utility.getPassword(), Utility.getPassword());
-                      startActivity(intent);
-                  }
-              }
+            @Override
+            public void onClick(View view) {
+                if(Utility.isInParentMode()) {
+                    Utility.setInParentMode(false);
+                    onParentModeChanged();
+                    Toast.makeText(MainActivity.this,
+                            "Logged Out",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(Utility.isNotFirstTime() == null) {
+                    Intent intent = new Intent(view.getContext(), ParentModeFirstTime.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(view.getContext(), ParentMode.class);
+                    intent.putExtra(Utility.getPassword(), Utility.getPassword());
+                    startActivity(intent);
+                }
+            }
         });
 
         setPhoneNumberButton.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  Intent intent = new Intent(view.getContext(), PhoneNumber.class);
-                  startActivity(intent);
-              }
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), PhoneNumber.class);
+                startActivity(intent);
+            }
         });
 
         parentModeTimeOut = new Handler();

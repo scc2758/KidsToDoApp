@@ -10,13 +10,15 @@ public class Trophy implements Serializable {
     private String description;
     private int pointValue;
     private boolean redeemed;
+    private String imageLocation;
     private Icon image;
     //BufferedImage image;
 
-    Trophy(String name, String description, int pointValue) {
+    Trophy(String name, String description, int pointValue, String imageLocation) {
         this.name = name;
         this.description = description;
         this.pointValue = pointValue;
+        this.imageLocation = imageLocation;
         //this.image = ImageIO.read(new File(name + ".png"));
     /*    try {
             img = ImageIO.read(new File("logo.png"));
