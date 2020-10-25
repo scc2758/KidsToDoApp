@@ -79,26 +79,30 @@ public class TrophyAdapter extends RecyclerView.Adapter<TrophyAdapter.ViewHolder
         editTrophyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
 
         String[] colors = {"#ECCCC5", "#D2ECC5", "#C5E5EC", "#E0C5EC"};
         viewHolder.itemView.setBackgroundColor(Color.parseColor(colors[position % colors.length]));
     }
-
     @Override
     public int getItemCount() {
         return mTrophies.size();
     }
-
     public void setVIEW_TYPE(int viewType) {
         VIEW_TYPE = viewType;
         notifyDataSetChanged();
     }
-
     public interface OnEntryListener {
         void onEntryClick(int position);
     }
 
+    private LayoutInflater thisInflater;
+    public View getView( View convertView, ViewGroup parent){
+        if (convertView == null) {
+            convertView = thisInflater.inflate(R.layout.trophy_item, parent, false);
+            ImageButton thumbnailImage = (ImageButton) convertView.findViewById(R.id.trophyImage);
+        }
+        return convertView;
+    }
 }

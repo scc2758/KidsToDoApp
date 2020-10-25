@@ -79,7 +79,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/input_name"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton7"
+        app:layout_constraintEnd_toStartOf="@+id/er2c1"
         app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_selectImage"
@@ -88,7 +88,7 @@
         android:contentDescription="@string/todo" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/eric2"
         android:layout_width="97dp"
         android:layout_height="92dp"
         android:adjustViewBounds="true"
@@ -96,14 +96,14 @@
         app:layout_constraintBottom_toTopOf="@+id/input_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.621"
-        app:layout_constraintStart_toEndOf="@+id/imageButton7"
+        app:layout_constraintStart_toEndOf="@+id/er2c1"
         app:layout_constraintTop_toBottomOf="@+id/textView_selectImage"
         app:layout_constraintVertical_bias="0.309"
         app:srcCompat="@drawable/trophy2"
         android:contentDescription="@string/todo" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/er2c1"
         android:layout_width="86dp"
         android:layout_height="92dp"
         android:layout_marginTop="19dp"

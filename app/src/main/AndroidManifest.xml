@@ -33,7 +33,7 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".PhoneNumber"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".BuyingTrophy" />
+        <activity android:name=".RedeemTrophy" />
     </application>
 
 </manifest>

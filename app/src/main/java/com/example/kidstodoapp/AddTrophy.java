@@ -48,14 +48,14 @@ public class AddTrophy extends AppCompatActivity {
             }
         });
 
-        image2 = findViewById(R.id.imageButton7);
+        image2 = findViewById(R.id.er2c1);
         image2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 imageLocation = "@drawable/trophy2";
             }
         });
 
-        image3 = findViewById(R.id.imageButton5);
+        image3 = findViewById(R.id.eric2);
         image3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 imageLocation = "@drawable/trophy3";

@@ -25,18 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
     <Button
         android:id="@+id/homeBtn"
         android:layout_width="wrap_content"
@@ -81,49 +69,6 @@
         app:layout_constraintTop_toBottomOf="@+id/earnedText"
         app:layout_constraintVertical_bias="0.393" />
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/earnedGrid"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/availableText"
-        app:layout_constraintEnd_toEndOf="@+id/include"
-        app:layout_constraintStart_toStartOf="@+id/include"
-        app:layout_constraintTop_toBottomOf="@+id/earnedText"
-        app:columnCount="3"
-        app:rowCount="3">
-
-        <ImageButton
-            android:id="@+id/earnedPrize"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-    </androidx.gridlayout.widget.GridLayout>
-
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/availableGrid"
-        android:layout_width="409dp"
-        android:layout_height="224dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/include"
-        app:layout_constraintTop_toBottomOf="@+id/availableText"
-        app:layout_constraintVertical_bias="0.0"
-        app:columnCount="3"
-        app:rowCount="3">
-
-        <ImageButton
-            android:id="@+id/availablePrize"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/todo"
-            app:layout_column="0"
-            app:layout_row="0"
-            app:srcCompat="@android:drawable/btn_star_big_off" />
-    </androidx.gridlayout.widget.GridLayout>
-
     <TextView
         android:id="@+id/numPt"
         android:layout_width="297dp"
@@ -148,5 +93,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
+
+    <GridView
+        android:id="@+id/earnedGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/availableText"
+        app:layout_constraintEnd_toEndOf="@+id/include"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/earnedText" />
+
+    <GridView
+        android:id="@+id/availableGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/AddTrophy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/availableText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
