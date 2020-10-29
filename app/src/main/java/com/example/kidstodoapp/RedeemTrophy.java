@@ -2,7 +2,6 @@ package com.example.kidstodoapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,14 +19,14 @@ public class RedeemTrophy extends Activity{
     private int points;
     private String imageLocation;
     TrophyCase trophyCase = new TrophyCase();
-    Trophy trophy = new Trophy(name, descrip,points,imageLocation);
+    //Trophy trophy = new Trophy(name, descrip,points,imageLocation);
     private Button trophyBtn;
     private Button buy;
     private ImageButton imageBtn;
     private TextView pointsTV;
     private TextView nameTV;
     private TextView descripTV;
-    Icon image = trophy.getImage();
+    //Icon image = trophy.getImage();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +54,7 @@ public class RedeemTrophy extends Activity{
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TrophyCase.pointsTotal -= points;
+                TrophyCase.pointsEarned -= points;
             }
         });
     }
