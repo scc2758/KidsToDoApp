@@ -1,15 +1,17 @@
 package com.example.kidstodoapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class AddTrophy extends AppCompatActivity {
 
@@ -41,21 +43,21 @@ public class AddTrophy extends AppCompatActivity {
             }
         });
 */
-        image1 = findViewById(R.id.imageButton4);
+        image1 = findViewById(R.id.imageButton);
         image1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 imageLocation = "@drawable/trophy1";
             }
         });
 
-        image2 = findViewById(R.id.er2c1);
+        image2 = findViewById(R.id.imageButton2);
         image2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 imageLocation = "@drawable/trophy2";
             }
         });
 
-        image3 = findViewById(R.id.eric2);
+        image3 = findViewById(R.id.imageButton3);
         image3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 imageLocation = "@drawable/trophy3";
@@ -78,8 +80,8 @@ public class AddTrophy extends AppCompatActivity {
                     Trophy newTrophy = new Trophy(
                             addName.getText().toString(),
                             addDescription.getText().toString(),
-                            Integer.parseInt(addPoints.getText().toString()),
-                            imageLocation
+                            Integer.parseInt(addPoints.getText().toString())
+                            //,imageLocation
                     );
                     Intent result = new Intent();
                     result.putExtra("Trophy", newTrophy);

@@ -1,38 +1,47 @@
 package com.example.kidstodoapp;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Telephony;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
+import android.widget.Toast;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
-public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEntryListener {
-    private static ArrayList<Trophy> existingTrophy = new ArrayList<>();
-    private static ArrayList<Trophy> archivedTrophy = new ArrayList<>();
-    private TrophyAdapter adapterEarned;
-    private TrophyAdapter adapterAvailable;
+public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEntryListener  {
 
-    private Button homeBtn;
+    private static ArrayList<Trophy> existingTrophies = new ArrayList<>();
+    private static ArrayList<Trophy> archivedTrophies = new ArrayList<>();
+
+    private static int pointsEarned = 0;
+    private TrophyAdapter adapter;
+    private RecyclerView recyclerView;
+
+    private final int NEW_ENTRY_REQUEST = 1;
+    private final int VIEW_ENTRY_REQUEST = 2;
+    private final int EDIT_ENTRY_REQUEST = 3;
+
+    private ImageButton trophy;
+    private TextView pointsDisplay;
     private Button createNewTrophy;
-    private ImageButton trophyImage;
-    private TextView numPt;
-    public static int pointsTotal;
-    private MainActivity main = new MainActivity();
 
     private final int VIEW = 1;
     private final int NEW = 2;
@@ -43,32 +52,91 @@ public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEnt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_case);
-        numPt.findViewById(R.id.numPt);
-        homeBtn.findViewById(R.id.homeBtn);
-        numPt.setText(String.format(Locale.US, "$%d", pointsTotal));
-        adapterEarned = new TrophyAdapter(existingTrophy, this);
-        adapterAvailable = new TrophyAdapter(archivedTrophy, this);
-        GridView earnedGrid = (GridView) findViewById(R.id.earnedGrid);
-        GridView availableGrid = (GridView) findViewById(R.id.availableGrid);
 
-        earnedGrid.setAdapter((ListAdapter) adapterEarned);
-        availableGrid.setAdapter((ListAdapter) adapterAvailable);
+        //Points Display
+        pointsDisplay = findViewById(R.id.points_display);
+        setPointsDisplay();
 
-        createNewTrophy = findViewById(R.id.AddTrophy);
+        //Set up recycler view
+        adapter = new TrophyAdapter(existingTrophies, this);
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        createNewTrophy = findViewById(R.id.add_trophy_button);
         createNewTrophy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddTrophy.class);
-                startActivityForResult(intent, NEW);
+                Intent intent = new Intent(view.getContext(), CreateTrophyActivity.class);
+                startActivityForResult(intent, NEW_ENTRY_REQUEST);
             }
         });
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(startIntent);
-            }
-        });
+
     }
+
+    public void setPointsDisplay() {
+        pointsDisplay.setText(String.format(Locale.US, "Total Points: $%d", pointsEarned));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent result) {
+        super.onActivityResult(requestCode, resultCode, result);
+        if (requestCode == NEW_ENTRY_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Bundle extras = result.getExtras();
+                Trophy newTrophy = (Trophy) extras.getSerializable("Trophy");
+                existingTrophies.add(newTrophy);
+                //Collections.sort(existingTrophies);
+                recyclerView.setAdapter(adapter);
+            }
+        }
+        if (requestCode == EDIT_ENTRY_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Bundle extras = result.getExtras();
+                int position = extras.getInt("position");
+                if (extras.getBoolean("Deleted")) {
+                    existingTrophies.remove(position);
+                    adapter.notifyItemRemoved(position);
+                } else {
+                    Trophy editedTrophy = (Trophy) extras.getSerializable("Trophy");
+                    existingTrophies.set(position, editedTrophy);
+                    //Collections.sort(existingTrophies);
+                }
+                recyclerView.setAdapter(adapter);
+            }
+        }
+        if (requestCode == VIEW_ENTRY_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Bundle extras = result.getExtras();
+                int position = extras.getInt("position");
+                Trophy trophy = existingTrophies.remove(position);
+                adapter.notifyItemRemoved(position);
+                trophy.setRedeemed(true);
+                archivedTrophies.add(trophy);
+                pointsEarned += trophy.getPoints();
+                setPointsDisplay();
+            }
+        }
+    }
+
+    @Override
+    public void onEntryClick(int position) {
+        Intent intent = new Intent(this, TrophyActivity.class);
+        intent.putExtra("Trophy", existingTrophies.get(position));
+        intent.putExtra("position", position);
+        startActivityForResult(intent, VIEW_ENTRY_REQUEST);
+    }
+
+    @Override
+    public void onEditClick(int position) {
+        Intent intent = new Intent(this, CreateToDoEntryActivity.class);
+        intent.putExtra("Trophy", existingTrophies.get(position));
+        intent.putExtra("position", position);
+        startActivityForResult(intent, EDIT_ENTRY_REQUEST);
+    }
+
+
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent result) {
         super.onActivityResult(requestCode, resultCode, result);
         if (requestCode == NEW) {
@@ -83,7 +151,7 @@ public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEnt
                 Bundle extras = result.getExtras();
                 int position = extras.getInt("position");
                 Trophy trophy = existingTrophy.remove(position);
-                adapterEarned.notifyItemRemoved(position);
+                adapter.notifyItemRemoved(position);
                 trophy.setCompleted(true);
             }
         }
@@ -96,7 +164,8 @@ public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEnt
         intent.putExtra("position", position);
         startActivityForResult(intent, VIEW);
     }
-    @SuppressLint("IntentReset")
+
+   @SuppressLint("IntentReset")
     private void sendSms(AlertDialog dialog,final String title) {               //Tries to send an sms
         String message = "Automated message from KidsToDoApp:" + "\n" + "I redeemed the" + title + "trophy!";
         boolean sent = true;
@@ -104,11 +173,15 @@ public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEnt
             SmsManager.getDefault().sendTextMessage(Utility.getPhoneNumber(), null, message, null, null);
         }
         catch(Exception e) {
-            //Toast.makeText(TrophyActivity.this,"Unable to Send Message", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TrophyActivity.this,
+                    "Unable to Send Message",
+                    Toast.LENGTH_SHORT).show();
             sent = false;
         }
         if(sent) {
-            //Toast.makeText(TrophyActivity.this, "Message Sent", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TrophyActivity.this,
+                    "Message Sent",
+                    Toast.LENGTH_SHORT).show();
         }
         dialog.dismiss();
     }
@@ -121,10 +194,12 @@ public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEnt
             else {dialog.dismiss();}
         }
     }
+
     private void smsDialog(final String title) {                                //Dialog confirming that the user would like to send an SMS to their parent
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Send SMS");
         builder.setMessage("Would you like to send an SMS to your parent asking for help?");
+
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -139,19 +214,26 @@ public class TrophyCase extends AppCompatActivity implements TrophyAdapter.OnEnt
                 //Later Overridden
             }
         });
+
         final AlertDialog dialog = builder.create();
         dialog.show();
+
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 smsPermissions(dialog, title);   //Checks for permissions
             }
         });
+
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
             }
         });
-    }
+    }*/
 }
+
+
+
+

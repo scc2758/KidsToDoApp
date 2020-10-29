@@ -1,32 +1,37 @@
 package com.example.kidstodoapp;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
 
-// This comment was made by Sean Youngstone
 public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEntryListener {
-
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private static ArrayList<ToDoEntry> toDoEntries = new ArrayList<>();
     private static ArrayList<ToDoEntry> completedEntries = new ArrayList<>();
-    private static int pointsEarned = 0;
+    private static long pointsEarned = 0;
+    private static String uid;
 
     private final int NEW_ENTRY_REQUEST = 1;
     private final int VIEW_ENTRY_REQUEST = 2;
@@ -37,24 +42,47 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
     private TextView pointsDisplay;
     private Button parentModeButton;
     private Button addEntryButton;
+
     private Button trophyCaseButton;
     private ImageButton setPhoneNumberButton;
 
     private Handler parentModeTimeOut;
     private Runnable runnable;
 
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        uid = mAuth.getCurrentUser().getUid();
+
+        pointsDisplay = findViewById(R.id.points_display);
         adapter = new ToDoAdapter(toDoEntries, this);
+
+        final DocumentReference documentReference = db.collection("users").document(uid);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                toDoEntries = buildToDoEntries((ArrayList<HashMap<String,Object>>)snapshot.get("toDoEntries"));
+                completedEntries = buildToDoEntries((ArrayList<HashMap<String,Object>>)snapshot.get("completedEntries"));
+                pointsEarned = (Long)snapshot.get("pointsEarned");
+                Utility.setPhoneNumber(snapshot.getString("phoneNumber"));
+                adapter = new ToDoAdapter(toDoEntries, MainActivity.this);
+                recyclerView.setAdapter(adapter);
+                setPointsDisplay();
+            }
+        });
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        pointsDisplay = findViewById(R.id.points_display);
         setPointsDisplay();
 
         addEntryButton = findViewById(R.id.add_entry_button);
@@ -65,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
             }
         });
 
-        trophyCaseButton = findViewById(R.id.trophyCase);
+        trophyCaseButton = findViewById(R.id.TrophyCase);
         trophyCaseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), TrophyCase.class);
@@ -80,33 +108,28 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
         setPhoneNumberButton.setVisibility(View.GONE);
 
         parentModeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Utility.isInParentMode()) {
-                    Utility.setInParentMode(false);
-                    onParentModeChanged();
-                    Toast.makeText(MainActivity.this,
-                            "Logged Out",
-                            Toast.LENGTH_SHORT).show();
-                }
-                else if(Utility.isNotFirstTime() == null) {
-                    Intent intent = new Intent(view.getContext(), ParentModeFirstTime.class);
-                    startActivity(intent);
-                }
-                else {
-                    Intent intent = new Intent(view.getContext(), ParentMode.class);
-                    intent.putExtra(Utility.getPassword(), Utility.getPassword());
-                    startActivity(intent);
-                }
-            }
+              @Override
+              public void onClick(View view) {
+                  if(Utility.isInParentMode()) {
+                      Utility.setInParentMode(false);
+                      onParentModeChanged();
+                      Toast.makeText(MainActivity.this,
+                              "Exiting parent mode",
+                              Toast.LENGTH_SHORT).show();
+                  }
+                  else {
+                      Intent intent = new Intent(view.getContext(), ConfirmPassword.class);
+                      startActivity(intent);
+                  }
+              }
         });
 
         setPhoneNumberButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), PhoneNumber.class);
-                startActivity(intent);
-            }
+              @Override
+              public void onClick(View view) {
+                  Intent intent = new Intent(view.getContext(), PhoneNumber.class);
+                  startActivity(intent);
+              }
         });
 
         parentModeTimeOut = new Handler();
@@ -117,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
                     Utility.setInParentMode(false);
                     onParentModeChanged();
                     Toast.makeText(MainActivity.this,
-                            "Logged Out Due to Inactivity",
+                            "Exiting parent mode due to inactivity",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -147,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent result) {
+        final DocumentReference documentReference = db.collection("users").document(uid);
         super.onActivityResult(requestCode, resultCode, result);
         if (requestCode == NEW_ENTRY_REQUEST) {
             if (resultCode == RESULT_OK) {
@@ -155,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
                 toDoEntries.add(newToDoEntry);
                 Collections.sort(toDoEntries);
                 recyclerView.setAdapter(adapter);
+                documentReference.update("toDoEntries", toDoEntries);
             }
         }
         if (requestCode == EDIT_ENTRY_REQUEST) {
@@ -170,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
                     Collections.sort(toDoEntries);
                 }
                 recyclerView.setAdapter(adapter);
+                documentReference.update("toDoEntries", toDoEntries);
             }
         }
         if (requestCode == VIEW_ENTRY_REQUEST) {
@@ -182,6 +208,8 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
                 completedEntries.add(entry);
                 pointsEarned += entry.getPointValue();
                 setPointsDisplay();
+                documentReference.update("toDoEntries", toDoEntries);
+                documentReference.update("pointsEarned", pointsEarned);
             }
         }
     }
@@ -211,14 +239,25 @@ public class MainActivity extends AppCompatActivity implements ToDoAdapter.OnEnt
             setPhoneNumberButton.setVisibility(View.VISIBLE);
             addEntryButton.setVisibility(View.VISIBLE);
             adapter.setVIEW_TYPE(ToDoAdapter.ITEM_TYPE_EDIT);
-            parentModeButton.setText(getResources().getString(R.string.logout));
+            parentModeButton.setText(getResources().getString(R.string.child));
         }
         else {
             setPhoneNumberButton.setVisibility(View.GONE);
             addEntryButton.setVisibility(View.GONE);
             adapter.setVIEW_TYPE(ToDoAdapter.ITEM_TYPE_NO_EDIT);
-            parentModeButton.setText(getResources().getString(R.string.login));
+            parentModeButton.setText(getResources().getString(R.string.parent));
         }
         recyclerView.setAdapter(adapter);
     }
+
+    public ArrayList<ToDoEntry> buildToDoEntries(ArrayList<HashMap<String,Object>> list) {
+        ArrayList<ToDoEntry> arrayList = new ArrayList<>();
+        for (HashMap<String,Object> map : list) {
+            arrayList.add(ToDoEntry.buildToDoEntry(map));
+        }
+        return arrayList;
+    }
+
+    @Override
+    public void onBackPressed() {}
 }

@@ -8,6 +8,7 @@
 
 
     <!-- <data>
+
          <variable
              android:name="user"
              android:type="com.example.ViewUser" />
