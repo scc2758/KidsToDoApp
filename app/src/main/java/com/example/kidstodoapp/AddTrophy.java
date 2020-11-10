@@ -1,17 +1,14 @@
 package com.example.kidstodoapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AddTrophy extends AppCompatActivity {
 
@@ -34,15 +31,6 @@ public class AddTrophy extends AppCompatActivity {
         final EditText addDescription = findViewById(R.id.input_description);
         final EditText addPoints = findViewById(R.id.input_points);
 
-        /*button = (Button)findViewById(R.id.pick_icon);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), PickImage.class);
-                startActivity(intent);
-            }
-        });
-*/
         image1 = findViewById(R.id.imageButton);
         image1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -64,6 +52,16 @@ public class AddTrophy extends AppCompatActivity {
             }
         });
 
+        createTrophy(createTrophy, addName, addDescription, addPoints);
+
+        cancelCreation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                cancel();
+            }
+        });
+    }
+
+    private void createTrophy(Button createTrophy, final EditText addName, final EditText addDescription, final EditText addPoints) {
         createTrophy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (TextUtils.isEmpty(addName.getText().toString())) {
@@ -88,12 +86,6 @@ public class AddTrophy extends AppCompatActivity {
                     setResult(RESULT_OK, result);
                     finish();
                 }
-            }
-        });
-
-        cancelCreation.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                cancel();
             }
         });
     }

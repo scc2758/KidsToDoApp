@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import java.util.Locale;
 
 public class RedeemTrophy extends Activity{
@@ -58,4 +56,15 @@ public class RedeemTrophy extends Activity{
             }
         });
     }
+   /* private void redeemed(final CheckBox redeemed) {
+        redeemed.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                mTrophy.setRedeemed(redeemed.isChecked());
+                Intent result = new Intent();
+                result.putExtra("position", position);
+                setResult(RESULT_OK, result);
+                finish();
+            }
+        });
+    }*/
 }

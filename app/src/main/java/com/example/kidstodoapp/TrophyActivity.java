@@ -1,13 +1,13 @@
 package com.example.kidstodoapp;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TrophyActivity extends AppCompatActivity {
 
@@ -32,15 +32,7 @@ public class TrophyActivity extends AppCompatActivity {
         TextView pointsTextView = findViewById(R.id.trophy_points_textview);
         final CheckBox redeemed = findViewById(R.id.redemption_check_box);
 
-        redeemed.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                mTrophy.setRedeemed(redeemed.isChecked());
-                Intent result = new Intent();
-                result.putExtra("position", position);
-                setResult(RESULT_OK, result);
-                finish();
-            }
-        });
+        redeemed(redeemed);
 
         nameTextView.setText(mTrophy.getName());
         descriptionTextView.setText(mTrophy.getDescription());
@@ -52,6 +44,17 @@ public class TrophyActivity extends AppCompatActivity {
             ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
+    }
 
+    private void redeemed(final CheckBox redeemed) {
+        redeemed.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                mTrophy.setRedeemed(redeemed.isChecked());
+                Intent result = new Intent();
+                result.putExtra("position", position);
+                setResult(RESULT_OK, result);
+                finish();
+            }
+        });
     }
 }
