@@ -36,6 +36,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".SignUpActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
