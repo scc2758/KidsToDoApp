@@ -38,7 +38,6 @@ public class TrophyAdapter extends RecyclerView.Adapter<TrophyAdapter.ViewHolder
             super(view);
 
             nameTextView = itemView.findViewById(R.id.trophy_name);
-//            descriptionTextView = itemView.findViewById(R.id.trophy_description);
             pointValueTextView = itemView.findViewById(R.id.trophy_points);
             trophyImageView = itemView.findViewById(R.id.trophy_icon);
 
@@ -74,7 +73,6 @@ public class TrophyAdapter extends RecyclerView.Adapter<TrophyAdapter.ViewHolder
         ImageView trophyImageView = viewHolder.trophyImageView;
 
         nameTextView.setText(trophy.getName());
-//        trophyImageView.setImageResource(R.drawable.trophy2);
         trophyImageView.setImageResource(((Long)trophy.getImageLocation()).intValue());
         String pointString = "Buy for $" + trophy.getPointValue();
         pointValueTextView.setText(pointString);

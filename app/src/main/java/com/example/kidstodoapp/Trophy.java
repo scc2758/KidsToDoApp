@@ -3,14 +3,12 @@ package com.example.kidstodoapp;
 import java.io.Serializable;
 import java.util.HashMap;
 
-//If you need to change the variable type within Trophy, make change in firebase too
 public class Trophy implements Serializable {
 
     private String name;
     private long pointValue;
     private boolean redeemed;
     private long imageLocation;
-    //private BufferedImage image;
 
     Trophy(String name, long pointValue, boolean redeemed, long imageLocation) { //, String imageLocation
         this.name = name;
