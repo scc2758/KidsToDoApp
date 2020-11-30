@@ -57,6 +57,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
         onParentModeChanged();
 
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fragment_slide_in,  // enter
+                        R.anim.fragment_fade_out,  // exit
+                        R.anim.fragment_fade_in,   // popEnter
+                        R.anim.fragment_slide_out  // popExit
+                )
                 .add(R.id.fragment_container, new ToDoListFragment(), "TO_DO_LIST")
                 .addToBackStack("TO_DO_LIST")                      //addToBackStack, so when any fragments replace it, and the user presses the back button
                 .commit();                                         //they return to this fragment
@@ -98,6 +104,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
                 if(!(fragment instanceof ToDoListFragment)) {
                     removeCurrentFragment();
                     getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.fragment_slide_in,  // enter
+                                    R.anim.fragment_fade_out,  // exit
+                                    R.anim.fragment_fade_in,   // popEnter
+                                    R.anim.fragment_slide_out  // popExit
+                            )
                             .replace(R.id.fragment_container, new ToDoListFragment(),"TO_DO_LIST")
                             .addToBackStack("TO_DO_LIST")
                             .commit();
@@ -107,6 +119,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
                 if(!(fragment instanceof TrophyCaseFragment)) {
                     removeCurrentFragment();
                     getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.fragment_slide_in,
+                                    R.anim.fragment_fade_out,
+                                    R.anim.fragment_fade_in,
+                                    R.anim.fragment_slide_out
+                            )
                             .replace(R.id.fragment_container, new TrophyCaseFragment(),"TROPHY_CASE")
                             .addToBackStack("TROPHY_CASE")
                             .commit();
@@ -122,6 +140,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
                 else {
                     if(!(fragment instanceof ConfirmPassword)) {
                         getSupportFragmentManager().beginTransaction()
+                                .setCustomAnimations(
+                                        R.anim.fragment_slide_in,
+                                        R.anim.fragment_fade_out,
+                                        R.anim.fragment_fade_in,
+                                        R.anim.fragment_slide_out
+                                )
                                 .replace(R.id.fragment_container, new ConfirmPassword(), "CONFIRM_PASSWORD")
                                 .addToBackStack("CONFIRM_PASSWORD")
                                 .commit();
@@ -132,6 +156,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
                 if(!(fragment instanceof CompletedListFragment)) {
                     removeCurrentFragment();
                     getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.fragment_slide_in,
+                                    R.anim.fragment_fade_out,
+                                    R.anim.fragment_fade_in,
+                                    R.anim.fragment_slide_out
+                            )
                             .replace(R.id.fragment_container, new CompletedListFragment(),"CONFIRM_COMPLETED")
                             .addToBackStack("CONFIRM_COMPLETED")
                             .commit();
@@ -142,6 +172,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
                     FAQ = new FAQ();
                     removeCurrentFragment();
                     getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.fragment_slide_in,
+                                    R.anim.fragment_fade_out,
+                                    R.anim.fragment_fade_in,
+                                    R.anim.fragment_slide_out
+                            )
                             .replace(R.id.fragment_container, FAQ, "FAQ")
                             .addToBackStack("FAQ")
                             .commit();
@@ -152,6 +188,12 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
                     settingsFragment = new SettingsFragment();
                     removeCurrentFragment();
                     getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.fragment_slide_in,
+                                    R.anim.fragment_fade_out,
+                                    R.anim.fragment_fade_in,
+                                    R.anim.fragment_slide_out
+                            )
                             .replace(R.id.fragment_container, settingsFragment, "SETTINGS")
                             .addToBackStack("SETTINGS")
                             .commit();

@@ -55,6 +55,12 @@ public class ToDoListFragment extends Fragment implements java.util.Observer, To
             public void onClick(View view) {
                 CreateToDoEntryFragment createToDoEntryFragment = new CreateToDoEntryFragment();
                 requireActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.fragment_slide_in,
+                                R.anim.fragment_fade_out,
+                                R.anim.fragment_fade_in,
+                                R.anim.fragment_slide_out
+                        )
                         .replace(R.id.fragment_container, createToDoEntryFragment, "CREATE_TO_DO_ENTRY")
                         .addToBackStack("CREATE_TO_DO_ENTRY")
                         .commit();
@@ -90,6 +96,12 @@ public class ToDoListFragment extends Fragment implements java.util.Observer, To
         ToDoEntryFragment toDoEntryFragment = new ToDoEntryFragment();
         toDoEntryFragment.setArguments(bundle);
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fragment_slide_in,
+                        R.anim.fragment_fade_out,
+                        R.anim.fragment_fade_in,
+                        R.anim.fragment_slide_out
+                )
                 .replace(R.id.fragment_container, toDoEntryFragment, "TO_DO_ENTRY")
                 .addToBackStack("TO_DO_ENTRY")
                 .commit();
@@ -102,6 +114,12 @@ public class ToDoListFragment extends Fragment implements java.util.Observer, To
         CreateToDoEntryFragment createToDoEntryFragment = new CreateToDoEntryFragment();
         createToDoEntryFragment.setArguments(bundle);
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fragment_slide_in,
+                        R.anim.fragment_fade_out,
+                        R.anim.fragment_fade_in,
+                        R.anim.fragment_slide_out
+                )
                 .replace(R.id.fragment_container, createToDoEntryFragment, "CREATE_TO_DO_ENTRY")
                 .addToBackStack("CREATE_TO_DO_ENTRY")
                 .commit();

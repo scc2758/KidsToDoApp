@@ -52,6 +52,12 @@ public class TrophyCaseFragment extends Fragment implements java.util.Observer, 
             public void onClick(View view) {
                 CreateTrophyFragment createTrophyFragment = new CreateTrophyFragment();
                 requireActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.fragment_slide_in,
+                                R.anim.fragment_fade_out,
+                                R.anim.fragment_fade_in,
+                                R.anim.fragment_slide_out
+                        )
                         .replace(R.id.fragment_container, createTrophyFragment, "CREATE_TROPHY")
                         .addToBackStack("CREATE_TROPHY")
                         .commit();
@@ -83,6 +89,12 @@ public class TrophyCaseFragment extends Fragment implements java.util.Observer, 
         TrophyFragment trophyFragment = new TrophyFragment();
         trophyFragment.setArguments(bundle);
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fragment_slide_in,
+                        R.anim.fragment_fade_out,
+                        R.anim.fragment_fade_in,
+                        R.anim.fragment_slide_out
+                )
                 .replace(R.id.fragment_container, trophyFragment, "TROPHY")
                 .addToBackStack("TROPHY")
                 .commit();
