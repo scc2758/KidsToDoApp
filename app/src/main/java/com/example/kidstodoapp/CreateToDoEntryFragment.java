@@ -44,6 +44,8 @@ public class CreateToDoEntryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_create_to_do_entry, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         model = DataModel.getInstance();
 
         Button createEntryButton = view.findViewById(R.id.create_entry_button);

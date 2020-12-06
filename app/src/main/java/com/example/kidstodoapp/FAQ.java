@@ -16,6 +16,8 @@ public class FAQ extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_faq, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         faqText1 = view.findViewById(R.id.faq_entry_1_text);
         faqText1.setVisibility(View.GONE);
 

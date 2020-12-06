@@ -30,6 +30,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         @SuppressLint("UseSwitchCompatOrMaterialCode")
         final Switch darkModeSwitch = view.findViewById(R.id.dark_mode_switch);
 

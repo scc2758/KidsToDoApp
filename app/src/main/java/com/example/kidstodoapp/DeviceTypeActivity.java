@@ -17,6 +17,8 @@ public class DeviceTypeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_type);
 
+        KeyboardUtility.hideKeyboard(this);
+
         Button saveButton = findViewById(R.id.save_user_button);
 
         saveButton.setOnClickListener(new View.OnClickListener() {

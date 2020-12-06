@@ -31,6 +31,8 @@ public class SignInActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        KeyboardUtility.hideKeyboard(this);
+
         mAuth = FirebaseAuth.getInstance();
 
         Button enterPassword = findViewById(R.id.enter_button_sign_in);

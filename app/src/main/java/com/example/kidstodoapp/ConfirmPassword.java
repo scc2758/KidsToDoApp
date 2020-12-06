@@ -19,6 +19,8 @@ public class ConfirmPassword extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_confirm_password, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         Button enterPassword = view.findViewById(R.id.enter_button_confirm_password);
         passwordInput = view.findViewById(R.id.password_confirm);
         passwordInput.setHint("Password");

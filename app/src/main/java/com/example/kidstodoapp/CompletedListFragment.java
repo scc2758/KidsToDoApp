@@ -23,6 +23,8 @@ public class CompletedListFragment extends Fragment implements java.util.Observe
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_completed_list, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         model = DataModel.getInstance();
         model.addObserver(this);
 

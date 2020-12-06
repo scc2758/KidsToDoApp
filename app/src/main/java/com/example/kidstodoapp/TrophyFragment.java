@@ -23,6 +23,8 @@ public class TrophyFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_trophy, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         model = DataModel.getInstance();
 
         Bundle bundle = getArguments();

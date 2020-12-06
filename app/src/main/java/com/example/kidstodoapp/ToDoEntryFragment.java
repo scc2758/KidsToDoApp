@@ -33,6 +33,8 @@ public class ToDoEntryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_to_do_entry, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         model = DataModel.getInstance();
 
         Bundle bundle = getArguments();

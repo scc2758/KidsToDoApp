@@ -30,6 +30,8 @@ public class ToDoListFragment extends Fragment implements java.util.Observer, To
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_to_do_list, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         parentModeUtility = ParentModeUtility.getInstance();
         parentModeUtility.addObserver(this);
 

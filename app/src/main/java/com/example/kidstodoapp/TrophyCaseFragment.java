@@ -29,6 +29,8 @@ public class TrophyCaseFragment extends Fragment implements java.util.Observer, 
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_trophy_case, container, false);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         model = DataModel.getInstance();
         model.addObserver(this);
 

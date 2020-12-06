@@ -27,6 +27,8 @@ public class CreateTrophyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_trophy, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        KeyboardUtility.hideKeyboard(requireActivity());
+
         model = DataModel.getInstance();
 
         Button createTrophyButton = view.findViewById(R.id.create_trophy_button);

@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,14 +34,23 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        KeyboardUtility.hideKeyboard(this);
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final Activity thisActivity = this;
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggleDrawer = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        ActionBarDrawerToggle toggleDrawer = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View view) {
+                super.onDrawerOpened(view);
+                KeyboardUtility.hideKeyboard(thisActivity);
+            }
+        };
         drawerLayout.addDrawerListener(toggleDrawer);
         toggleDrawer.syncState();
 
