@@ -22,7 +22,7 @@ jobs:
 
 name: Build notification
 
-on: [Commit]
+on: [commit]
 
 jobs:
   build:
