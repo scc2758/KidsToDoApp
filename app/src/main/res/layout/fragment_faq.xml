@@ -13,22 +13,38 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/faq_entry_1_title"
+                android:id="@+id/faq_entry_0_title"
                 style="@style/titleFAQ"
                 android:fontFamily="@font/cabin"
                 android:text="How do I add a task?" />
 
             <TextView
-                android:id="@+id/faq_entry_1_text"
+                android:id="@+id/faq_entry_0_text"
                 style="@style/textFAQ"
                 android:fontFamily="@font/cabin"
                 android:text="1. Open the hamburger menu\n2. Click on Parent Mode\n3. Enter your password\n\nWhile you are logged in you can add tasks on the To Do List screen!"/>
 
             <View
-                android:id="@+id/divider1"
+                android:id="@+id/divider0"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:fontFamily="@font/cabin"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/faq_entry_1_title"
+                style="@style/titleFAQ"
+                android:text="• Title" />
+
+            <TextView
+                android:id="@+id/faq_entry_1_text"
+                style="@style/textFAQ"
+                android:text="Text"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
             <TextView
@@ -168,22 +184,6 @@
 
             <View
                 android:id="@+id/divider9"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:id="@+id/faq_entry_10_title"
-                style="@style/titleFAQ"
-                android:text="• Title" />
-
-            <TextView
-                android:id="@+id/faq_entry_10_text"
-                style="@style/textFAQ"
-                android:text="Text"/>
-
-            <View
-                android:id="@+id/divider10"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />

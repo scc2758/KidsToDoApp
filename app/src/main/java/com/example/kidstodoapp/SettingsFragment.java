@@ -120,48 +120,13 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public void toggleVisibility(View view) {
         switch (view.getId()) {
             case R.id.themes:
-                if (themeView.isShown()) {
-                    themeView.setVisibility(View.GONE);
-//                    AnimationsUtility.toggleClose(getContext(), themeView);
-                }
-                else {
-                    themeView.setVisibility(View.VISIBLE);
-                    AnimationsUtility.toggleOpen(getContext(), themeView);
-                }
+                AnimationsUtility.toggleEntryVisibility(themeView, getContext());
                 break;
             case R.id.phoneNumber:
-                if (phoneNumberView.isShown()) {
-                    phoneNumberView.setVisibility(View.GONE);
-//                    AnimationsUtility.toggleClose(getContext(), phoneNumberView);
-                    }
-                else {
-                    if(ParentModeUtility.getInstance().isInParentMode()) {
-                        phoneNumberView.setVisibility(View.VISIBLE);
-                        AnimationsUtility.toggleOpen(getContext(), phoneNumberView);
-                    }
-                    else {
-                        Toast.makeText(SettingsFragment.this.getContext(),
-                                "Please enter Parent Mode to edit phone number",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }
+                AnimationsUtility.toggleEntryVisibility(phoneNumberView, getContext(), "edit phone number");
                 break;
             case R.id.logout:
-                if (logoutView.isShown()) {
-                    logoutView.setVisibility(View.GONE);
-//                    AnimationsUtility.toggleClose(getContext(), logoutView);
-                }
-                else {
-                    if(ParentModeUtility.getInstance().isInParentMode()) {
-                        logoutView.setVisibility(View.VISIBLE);
-                        AnimationsUtility.toggleOpen(getContext(), logoutView);
-                    }
-                    else {
-                        Toast.makeText(SettingsFragment.this.getContext(),
-                                "Please enter Parent Mode to log out",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }
+                AnimationsUtility.toggleEntryVisibility(logoutView, getContext(), "log out");
         }
     }
 
