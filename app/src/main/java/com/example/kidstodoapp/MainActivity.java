@@ -3,6 +3,7 @@ package com.example.kidstodoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements java.util.Observe
         setContentView(R.layout.activity_main);
 
         KeyboardUtility.hideKeyboard(this);
+        getWindow().setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.backdrop));
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);

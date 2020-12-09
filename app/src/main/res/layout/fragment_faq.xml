@@ -16,13 +16,13 @@
                 android:id="@+id/faq_entry_0_title"
                 style="@style/titleFAQ"
                 android:fontFamily="@font/cabin"
-                android:text="How do I add a task?" />
+                android:text="How do I add a task/trophy?" />
 
             <TextView
                 android:id="@+id/faq_entry_0_text"
                 style="@style/textFAQ"
                 android:fontFamily="@font/cabin"
-                android:text="1. Open the hamburger menu\n2. Click on Parent Mode\n3. Enter your password\n\nWhile you are logged in you can add tasks on the To Do List screen!"/>
+                android:text="1. Open the hamburger menu\n2. Click on Parent Mode\n3. Enter your password\n\nWhile you are logged in you can add tasks on the To Do List screen, and trophies to the trophy case!"/>
 
             <View
                 android:id="@+id/divider0"
